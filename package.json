@@ -1,0 +1,10 @@
+{
+  "name": "sanitize-js",
+  "version": "0.0.1",
+  "description": "A simple javascript email sanitizer",
+  "main": "index.js",
+  "repository": "github.com/ArunGovil/sanitizer-js",
+  "author": "Arun Govil",
+  "license": "MIT",
+  "private": false
+}
