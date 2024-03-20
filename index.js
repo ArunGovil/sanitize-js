@@ -10,5 +10,7 @@ export function sanitize(email, customRegex) {
   sanitized = sanitized.replace(/[^a-zA-Z0-9!#$%&'*+/=?^_`{|}~.-@]/g, "");
   // Remove consecutive dots
   sanitized = sanitized.replace(/\.{2,}/g, ".");
+  // Remove multiple occurance of @
+  sanitized = sanitized.replace(/@{2,}/g, "@");
   return sanitized;
 }

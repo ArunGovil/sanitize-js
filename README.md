@@ -24,12 +24,11 @@ yarn add @arungovil/sanitize-js
 ## Usage:
 
 ```js
-import sanitize from '@arungovil/sanitize-js';
+import { sanitize } from "@arungovil/sanitize-js";
 
-const email = "arungovil@duck.com"
+const email = "arungovil@duck.com";
 
 const sanitized = sanitize(email);
-
 ```
 
 ## Parameters
