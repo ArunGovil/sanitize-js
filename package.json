@@ -1,6 +1,6 @@
 {
   "name": "@arungovil/sanitize-js",
-  "version": "0.0.85",
+  "version": "0.0.9",
   "description": "A tiny javascript email sanitizer",
   "main": "sanitize.js",
   "files": [

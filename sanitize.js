@@ -1,8 +1,5 @@
 export function sanitize(email, customRegex) {
-  if (!email || typeof email != "string") {
-    console.error("Email must be a non-empty string.");
-    return;
-  }
+  if (!email || typeof email != "string") return "";
 
   let sanitized = email.toLowerCase().trim();
 
