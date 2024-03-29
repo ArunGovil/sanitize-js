@@ -1,30 +1,33 @@
 export function sanitize(email, customRegex) {
-  if (!email) return "";
-  let sanitized = email.trim();
+  if (!email || typeof email != "string") {
+    throw new Error("Email must be a non-empty string.");
+  }
+
+  let sanitized = email.toLowerCase().trim();
 
   // Apply custom regex
   if (customRegex) {
     sanitized = sanitized.replace(customRegex, "");
   }
 
-  // Function to remove multiple occurace of @
+  // Function to remove multiple occurrence of @
   function removeAt(mail) {
     const lastIndex = mail.lastIndexOf("@");
-    let formattedMail = "";
+    let formatted = "";
     for (let i = 0; i < mail.length; i++) {
       if (mail[i] === "@" && i !== lastIndex) {
         continue;
       }
-      formattedMail += mail[i];
+      formatted += mail[i];
     }
-    return formattedMail;
+    return formatted;
   }
 
   // Sanitize special characters
   sanitized = sanitized.replace(/[^a-zA-Z0-9!#$%&'*+/=?^_`{|}~.-@]/g, "");
   // Remove consecutive dots
   sanitized = sanitized.replace(/\.{2,}/g, ".");
-  // Remove multiple occurance of @ except the last one
+  // Remove multiple occurrence of @ except the last one
   sanitized = removeAt(sanitized);
   return sanitized;
 }
