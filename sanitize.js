@@ -1,5 +1,7 @@
-export function sanitize(email, customRegex) {
+export function sanitize(email, options = {}) {
   if (!email || typeof email != "string") return "";
+
+  const { customRegex = "", isNormalString = false } = options;
 
   let sanitized = email.toLowerCase().trim();
 
@@ -8,7 +10,7 @@ export function sanitize(email, customRegex) {
     sanitized = sanitized.replace(customRegex, "");
   }
 
-  // Function to remove multiple occurrence of @
+  // Function to remove multiple occurrence of @ except the last one
   function removeAt(mail) {
     const lastIndex = mail.lastIndexOf("@");
     let formatted = "";
@@ -25,8 +27,10 @@ export function sanitize(email, customRegex) {
   sanitized = sanitized.replace(/[^a-zA-Z0-9!#$%&'*+/=?^_`{|}~.-@]/g, "");
   // Remove consecutive dots
   sanitized = sanitized.replace(/\.{2,}/g, ".");
-  // Remove multiple occurrence of @ except the last one
-  sanitized = removeAt(sanitized);
+  // Remove multiple occurrence of @
+  sanitized = isNormalString
+    ? sanitized.replace(/@/g, "")
+    : removeAt(sanitized);
   return sanitized;
 }
 
