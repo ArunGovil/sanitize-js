@@ -86,10 +86,6 @@ arungovil@duck.com
   </tr>
 </table>
 
-#### Note
-Sanitize-js is used for email sanitization, if you are looking for an email validator use [validator.js](https://github.com/validatorjs/validator.js)
-
-
 ## Examples
 ### Using custom regex
 Pass a custom regex to strip out matching characters.
@@ -120,7 +116,7 @@ import { sanitize } from "@arungovil/sanitize-js";
 
 const userName = "arun(🐞)govil";
 
-const sanitizedUserName = sanitize(userName, { isNormalString: myRegex  });
+const sanitizedUserName = sanitize(userName, { isNormalString: true  });
 ```
 #### Result 
 
@@ -131,3 +127,6 @@ arun(🐞)govil
 ✅ After
 arungovil 
 ```
+
+#### Note
+Sanitize-js is used for email sanitization, if you are looking for an email validator use [validator.js](https://github.com/validatorjs/validator.js)
