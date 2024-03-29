@@ -1,8 +1,8 @@
 <p align="center">
 <h2 align="center"><a href="https://www.npmjs.com/package/@arungovil/sanitize-js">sanitize-js</a></h2>
 </p>
-<p align="center">
-RFC822 email sanitization in JavaScript.
+<p align="center"> 
+🧹 RFC822 based email sanitization in Javascript.
 </p>
 
 ---
@@ -21,14 +21,23 @@ Using Yarn
 yarn add @arungovil/sanitize-js
 ```
 
-## Usage:
+## Example:
 
 ```js
 import { sanitize } from "@arungovil/sanitize-js";
 
-const email = "arungovil@duck.com";
+const email = "arun(🐞)govil@duck.com";
 
-const sanitized = sanitize(email);
+const sanitizedEmail = sanitize(email);
+```
+#### Result 
+
+```js
+❌ Before
+arun(🐞)govil@duck.com 
+
+✅ After
+arungovil@duck.com 
 ```
 
 ## Parameters
@@ -53,3 +62,6 @@ const sanitized = sanitize(email);
     <td>Additional custom sanitizer regex</td>
   </tr>
 </table>
+
+#### Note
+Sanitize-js is used for email sanitization, if you are looking for an email validator use [validator.js](https://github.com/validatorjs/validator.js)
