@@ -21,7 +21,7 @@ Using Yarn
 yarn add @arungovil/sanitize-js
 ```
 
-## Example:
+## Usage
 
 ```js
 import { sanitize } from "@arungovil/sanitize-js";
@@ -56,12 +56,78 @@ arungovil@duck.com
     <td>Email string to sanitize</td>
   </tr>
    <tr>
+    <td>options</td>
+    <td>object</td>
+    <td>false</td>
+    <td>Additional options</td>
+  </tr>
+</table>
+
+### Options
+
+<table>
+  <tr>
+    <th>Name<br/></th>
+    <th>Type</th>
+    <th>Required</th>
+    <th>Description</th>
+  </tr>
+  <tr>
     <td>customRegex</td>
     <td>regex</td>
     <td>false</td>
-    <td>Additional custom sanitizer regex</td>
+    <td>Regex to strip out custom patterns</td>
+  </tr>
+   <tr>
+    <td>isNormalString</td>
+    <td>boolean</td>
+    <td>false</td>
+    <td>To sanitize non email inputs</td>
   </tr>
 </table>
 
 #### Note
 Sanitize-js is used for email sanitization, if you are looking for an email validator use [validator.js](https://github.com/validatorjs/validator.js)
+
+
+## Examples
+### Using custom regex
+Pass a custom regex to strip out matching characters.
+
+```js
+import { sanitize } from "@arungovil/sanitize-js";
+
+const email = "arun(🐞)govil@duck.com";
+const myRegex = /#/g; // regex to strip out #
+
+const sanitizedEmail = sanitize(email, { customRegex: myRegex  });
+```
+#### Result 
+
+```js
+❌ Before
+arun#govil@duck.com 
+
+✅ After
+arungovil@duck.com 
+```
+
+### Sanitize non email strings
+To sanitize only the username of an email or a random string
+
+```js
+import { sanitize } from "@arungovil/sanitize-js";
+
+const userName = "arun(🐞)govil";
+
+const sanitizedUserName = sanitize(userName, { isNormalString: myRegex  });
+```
+#### Result 
+
+```js
+❌ Before
+arun(🐞)govil
+
+✅ After
+arungovil 
+```
