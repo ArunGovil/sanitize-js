@@ -28,3 +28,5 @@ export function sanitize(email, customRegex) {
   sanitized = removeAt(sanitized);
   return sanitized;
 }
+
+export default sanitize;

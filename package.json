@@ -1,10 +1,22 @@
 {
   "name": "@arungovil/sanitize-js",
-  "version": "0.0.5",
-  "description": "A simple javascript email sanitizer",
-  "main": "index.js",
-  "repository": "github.com/ArunGovil/sanitizer-js",
+  "version": "0.0.7",
+  "description": "A tiny javascript email sanitizer",
+  "main": "sanitize.js",
+  "files": [
+    "sanitize.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArunGovil/sanitizer-js.git"
+  },
+  "keywords": [
+    "sanitize",
+    "email",
+    "rfc822"
+  ],
   "author": "Arun Govil",
   "license": "MIT",
+  "homepage": "https://github.com/ArunGovil/sanitize-js#readme",
   "private": false
 }
